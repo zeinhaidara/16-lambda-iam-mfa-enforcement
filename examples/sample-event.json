@@ -1,0 +1,24 @@
+{
+  "version": "0",
+  "id": "a1b2c3d4-5678-90ab-cdef-example11111",
+  "detail-type": "AWS API Call via CloudTrail",
+  "source": "aws.iam",
+  "account": "123456789012",
+  "time": "2026-01-15T10:00:00Z",
+  "region": "us-east-1",
+  "detail": {
+    "eventVersion": "1.08",
+    "eventSource": "iam.amazonaws.com",
+    "eventName": "CreateUser",
+    "awsRegion": "us-east-1",
+    "requestParameters": {
+      "userName": "jsmith"
+    },
+    "responseElements": {
+      "user": {
+        "userName": "jsmith",
+        "arn": "arn:aws:iam::123456789012:user/jsmith"
+      }
+    }
+  }
+}
