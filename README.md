@@ -1,4 +1,4 @@
-# lambda-iam-mfa-enforcement
+# IAM MFA enforcement Lambda
 
 A Python Lambda handler that reacts to IAM `CreateUser` events and attaches a
 deny-without-MFA policy to the new user, then publishes a notification.
@@ -97,7 +97,7 @@ deployed as the actual Lambda.)
 - Re-running the handler for the same user multiple times results in the same
   end state: one policy attached, one notification sent per invocation.
 
-## Tests
+## Validation
 
 ```bash
 pip install -r requirements-test.txt
