@@ -3,6 +3,10 @@
 A Python Lambda handler that reacts to IAM `CreateUser` events and attaches a
 deny-without-MFA policy to the new user, then publishes a notification.
 
+Why it matters: an IAM user with a password and no MFA is one leaked
+credential away from full use of its permissions. Attaching the policy at
+creation time closes that gap without waiting for someone to notice.
+
 **Scope.** This is the handler logic plus tests, not a deployable stack: no
 Terraform/CDK/SAM template is included, the Lambda is never packaged or
 uploaded, and no test makes a real AWS API call. All IAM/STS/SNS calls are
@@ -117,3 +121,10 @@ Implemented and unit-tested against mocked AWS clients. Not deployed; no
 live AWS calls have been exercised. Deploying requires wiring the Lambda,
 EventBridge rule, SNS topic, and IAM execution role yourself using the
 samples in `examples/` as a starting point.
+
+## Known limitations
+
+- Only users created after the rule is in place are covered. Existing users
+  without MFA are not touched.
+- No deployable stack (Terraform, CDK or SAM) is included.
+- Never run against a real AWS account.
